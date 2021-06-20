@@ -1,8 +1,14 @@
-function pageLoader()
-{
+// function pageLoader()
+// {
+//   var loader = document.getElementById('loading');
+//   loader.style.display="none";
+// }
+
+
+window.addEventListener('load', function(){
   var loader = document.getElementById('loading');
   loader.style.display="none";
-}
+});
 
 // Clock , Live time
 // Live Date
