@@ -31,7 +31,7 @@ html {
   position: fixed;
   width: 100%;
   height: 100vh;
-  background: #191919 url(./assets/loading1.gif) no-repeat center;
+  background: #191919 url('./assets/loading1.gif') no-repeat center;
   z-index: 99999;
 
   /* Uncopyable */
@@ -221,7 +221,7 @@ a.label:visited {
   border: none;
   width: 100%;
   height: 250px;
-  background: #777a80 url(./assets/banner2bg.jpg);
+  background: #777a80 url('./assets/banner2bg.jpg');
   background-blend-mode: darken;
   background-size: cover;
 
