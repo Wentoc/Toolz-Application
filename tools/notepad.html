@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notepad</title>
+
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            overflow: hidden;
+        }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+
+            /* Uncopyable */
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        #loading {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: #191919 url("../assets/loading1.gif") no-repeat center;
+            z-index: 99999;
+
+            /* Uncopyable */
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(to right,
+                    rgb(0, 60, 255),
+                    rgba(231, 15, 15, 0.74));
+        }
+
+        .nav-bar ul li {
+            display: inline-block;
+            list-style: none;
+            margin-left: 5px;
+
+            /* Uncopyable */
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .header-h1-li .header-h1 {
+            font-size: 25px;
+            transform: translate(70%, -25%);
+        }
+
+        .back-btn {
+            width: 40px;
+            height: 40px;
+            margin-top: 20px;
+            margin-left: 5px;
+        }
+
+        .back-btn:hover {
+            cursor: pointer;
+        }
+
+        .nav-bar ul li h1 {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: rgb(210, 222, 233);
+            transform: translate(50%, -35%);
+        }
+
+        .container {
+            color: #fff;
+        }
+
+        main {
+            color: #333;
+            display: block;
+            width: 100%;
+            height: 50px;
+            font-size: 1.5em;
+            padding: 1.5em;
+            font-family: Helvetica;
+            overflow: scroll;
+            outline: none;
+        }
+
+        button {
+            position: fixed;
+            bottom: 0;
+            height: 70px;
+            width: 100%;
+            background: #e67e22;
+            box-sizing: border-box;
+            color: #f5f5f5;
+            font-weight: bold;
+            outline: none;
+            border: none;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        button h1 {
+            font-size: 20px;
+        }
+
+        button:hover {
+            background: #c86c1d;
+            cursor: pointer;
+        }
+
+        button:active {
+            background: #ab5c18;
+        }
+
+        textarea {
+            font-family: sans-serif;
+            width: 100%;
+            height: 100%;
+            font-size: 20px;
+            padding: 1em;
+            border: 0;
+            box-sizing: border-box;
+            margin-top: 6.7px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function pageLoaded() {
+            var loader = document.getElementById("loading");
+            loader.style.display = "none";
+        };
+
+        function backPressed() { // Function for Back Button Press Event
+            window.location.assign('../index.html');
+        }
+
+        // Main Functions and Local Storage
+        var d = document;
+
+        function supports_html5_storage() {
+            try {
+                return 'localStorage' in window && window['localStorage'] !== null;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        d.addEventListener('DOMContentLoaded', ()=>{
+            var savedContent = localStorage.getItem("notepadcontent");
+
+            if(savedContent != null) {
+                d.getElementById("notepad").value = savedContent;
+            }
+
+            d.getElementById("notepad").onkeyup = () =>{
+                var data = d.getElementById("notepad").value;
+                
+                localStorage.setItem("notepadcontent", data);
+            }
+        })
+
+        // var button = document.querySelector('button');
+        // var main = document.querySelector('main');
+
+        // if (localStorage['note'] === undefined) {
+        //     localStorage['note'] =
+        //         'Save your note by typing in here and clicking the Save Button.<br>You can also press CMD + S / CTRL + S'
+        // }
+
+        // function siteLoad() {
+        //     main.innerHTML = localStorage['note'];
+        // }
+
+        // function buttonSave() {
+        //     localStorage['note'] = main.innerHTML;
+        // }
+
+        // function keySave(e) {
+        //     if (e.keyCode === 83 && e.metaKey || e.keyCode === 83 && e.ctrlKey) {
+        //         e.preventDefault();
+        //         localStorage['note'] = main.innerHTML;
+        //     }
+        // }
+
+        // if (window.addEventListener) {
+
+        //     window.addEventListener('load', siteLoad, false);
+        //     button.addEventListener('click', buttonSave, false);
+        //     main.addEventListener('keydown', keySave, false);
+
+        // } else if (window.attachEvent) {
+
+        //     window.attachEvent('onload', siteLoad);
+        //     button.attachEvent('onclick', buttonSave);
+        //     main.attachEvent('keydown', keySave);
+
+        // } else {
+
+        //     window.onload = siteLoad;
+        //     button.onclick = buttonSave;
+        //     main.onkeydown = keySave;
+
+        // }
+        // var button = document.querySelector('button');
+        // var main = document.querySelector('main');
+
+        // if(localStorage['note'] === undefined) {
+        //     localStorage['note'] = null
+        // }
+
+        // function siteLoad() {
+        //     main.innerHTML = localStorage['note'];
+        // }
+
+        // function buttonSave() {
+        //     localStorage['note'] = main.innerHTML;
+        // }
+
+        // function keySave(e) {
+        //   if(e.keyCode === 83 && e.metaKey || e.keyCode === 83 && e.ctrlKey) {
+        //       e.preventDefault();
+        //       localStorage['note'] = main.innerHTML;
+        //   }
+        // }
+
+        // if(window.addEventListener) {
+
+        //     window.addEventListener('load', siteLoad, false);
+        //     button.addEventListener('click', buttonSave, false);
+        //     main.addEventListener('keydown', keySave);
+
+        // } else if(window.attachEvent) {
+
+        //     window.attachEvent('onload', siteLoad);
+        //     window.attachEvent('onclick', buttonSave);
+        //     window.attachEvent('keydown', keySave);
+
+        // } else {
+
+        //     window.onload = siteLoad ;
+        //     button.onclick = buttonSave ;
+        //     main.onkeydown = keySave ;
+
+        // }
+    </script>
+</head>
+
+<body onload="pageLoaded()">
+    <!-- Loading Animation -->
+    <div id="loading"></div>
+
+    <nav class="nav-bar">
+        <ul>
+            <li>
+                <img src="../assets/back-icon.png" class="back-btn" onclick="backPressed()" alt="Back" />
+            </li>
+            <li class="header-h1-li">
+                <h1 class="header-h1">Your Notes</h1>
+            </li>
+        </ul>
+    </nav><br><br><br><br>
+
+    <textarea id="notepad" placeholder="Type your note here..."></textarea>
+
+</body>
+
+</html>

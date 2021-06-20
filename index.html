@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <title>Toolz App</title>
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="icon" href="../assets/icon.png" />
+
+    <!-- All CDN's -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+
+</head>
+
+<body onload="pageLoader()">
+    <script src="../js/app.js"></script>
+
+    <!-- Loading Animation -->
+    <div id="loading"></div>
+
+    <!-- Navigation Bar -->
+
+    <div id="dropdown-selector">
+        <div id="select-box">
+            <input type="checkbox" id="options-view-button">
+            <div id="select-button" class="selector">
+                <div id="selected-value" style="margin-top: 5px; margin-left: -20px;">
+                    <span style="margin-top: -5px;">Home</span>
+                </div>
+                <div id="chevrons"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-chevron-down" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                    </svg></div>
+            </div>
+            <div id="options">
+                <div class="option">
+                    <a class="label" href="#">About</a>
+                </div>
+                <div class="option">
+                    <a class="label" href="#">Help & Support</a>
+                </div>
+                <div class="option">
+                    <a class="label" href="#">How to use?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The whole Container where the App is -->
+    <div class="container" style="margin-top: 16.7px;">
+
+        <div class="welcomeContainer">
+
+            <p class="welcomeMessage">
+                <h2 class="h2"> Welcome to Toolz </h2>
+
+                <p style="display: flex; flex: 1; color: #fff; font-size: 20px; text-align: center;">
+                  You can use different tools for your daily purpose such as office, personal use etc.
+                </p>
+            </p>
+        
+            <div class="clock">
+                <ul>
+                    <li id="hours"></li>
+                    <li id="point">:</li>
+                    <li id="min"></li>
+                    <li id="point">:</li>
+                    <li id="sec"></li>
+                </ul><br>
+            </div>
+            <div id="Date"></div>
+
+        </div>
+
+        <!-- All Tools -->
+        <div class="tools">
+            <div class="tool t1" onclick="tool1()">
+                <img src="./assets/pdfIco.png" class="t-img1" style="-webkit-tap-highlight-color: transparent;"/>
+                <h1 style="color: #000; font-size: 25px; margin-top: -105px; font-weight: normal; display: flex; flex: 1;
+                 flex-direction: row; position: relative; left: 45px;">
+                Image to PDF</h1>
+                <p style="color: rgba(0, 0, 0, 0.521); position: relative; left: 45px;">
+                   convert images to pdf
+                </p>
+            </div>
+
+            <div class="tool t2" onclick="tool2()">
+                <img src="./assets/notesicon.png" class="t-img2" style="-webkit-tap-highlight-color: transparent;"/>
+                <h1 style="color: #000; font-size: 25px; margin-top: -72px; font-weight: normal; display: flex; flex: 1;
+                 flex-direction: row; position: relative; left: 45px;">
+                Your Notes</h1>
+                <p style="color: rgba(0, 0, 0, 0.521); position: relative; left: 45px;">
+                   note your daily tasks eg: groceries etc
+                </p>
+            </div>
+
+            <div class="tool t3" onclick="tool3()">
+                <img src="./assets/txteditoricon.jpg" class="t-img3" style="-webkit-tap-highlight-color: transparent;"/>
+                <h1 style="color: #000; font-size: 25px; margin-top: -70px; font-weight: normal; display: flex; flex: 1;
+                 flex-direction: row; position: relative; left: 45px;">
+                Text Editor</h1>
+                <p style="color: rgba(0, 0, 0, 0.521); position: relative; left: 45px;">
+                   edit your text and create text styles
+                </p>
+            </div>
+
+            <div class="tool t4" onclick="tool4()">
+                <img src="./assets/calculatoricon.png" class="t-img4" style="-webkit-tap-highlight-color: transparent;"/>
+                <h1 style="color: #000; font-size: 25px; margin-top: -70px; font-weight: normal; display: flex; flex: 1;
+                 flex-direction: row; position: relative; left: 45px;">
+                Text Editor</h1>
+                <p style="color: rgba(0, 0, 0, 0.521); position: relative; left: 45px;">
+                   edit your text and create text styles
+                </p>
+            </div>
+
+            <div class="tool t5" onclick="tool5()">
+
+            </div>
+
+            <div class="tool t6" onclick="tool6()">
+
+            </div>
+
+            <div class="tool t7" onclick="tool7()">
+
+            </div>
+
+            <div class="tool t8" onclick="tool8()">
+
+            </div>
+
+            <div class="tool t9" onclick="tool9()">
+
+            </div>
+
+            <div class="tool t10" onclick="tool10()">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

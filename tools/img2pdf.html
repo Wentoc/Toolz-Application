@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Toolz Image to Pdf</title>
+    <style type="text/css">
+        /* Font Api's from Google Fonts */
+
+        @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap");
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #c2a8a8 url('../assets/scenery1.jpg');
+            background-blend-mode: darken;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+
+            /* Uncopyable */
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        #loading {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: #191919 url("../assets/loading1.gif") no-repeat center;
+            z-index: 99999;
+
+            /* Uncopyable */
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(to right,
+                    rgb(0, 60, 255),
+                    rgba(231, 15, 15, 0.74));
+        }
+
+        .nav-bar ul li {
+            display: inline-block;
+            list-style: none;
+            margin-left: 5px;
+
+            /* Uncopyable */
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .back-btn {
+            width: 40px;
+            height: 40px;
+            margin-top: 20px;
+            margin-left: 5px;
+        }
+
+        .back-btn:hover {
+            cursor: pointer;
+        }
+
+        .nav-bar ul li h1 {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: rgb(210, 222, 233);
+            transform: translate(50%, -35%);
+        }
+
+        .container {
+            color: #fff;
+        }
+
+        .upload-box-container {
+            box-shadow: 0 4px 8px 0 rgba(172, 160, 160, 0.2), 0 6px 20px 0 rgba(109, 104, 104, 0.19);
+            position: absolute;
+            top: 180px;
+            left: 11px;
+            color: rgb(253, 253, 253);
+            width: 95%;
+            height: 80px;
+            border-radius: 3px;
+            cursor: pointer;
+            background-color: rgba(24, 25, 26, 0.925)
+        }
+
+        .upload-box-container input {
+            cursor: pointer;
+            position: absolute;
+            top: 30px;
+            left: 40px;
+        }
+
+        .button {
+            color: #f7e2e2;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 20px;
+            font-weight: 1000;
+            width: 95%;
+            height: 60px;
+            margin-top: 70px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            /* border: 2px solid rgb(235, 225, 225); */
+            background: linear-gradient(to right, 
+            #0e40e4, rgb(226, 48, 48));
+        }
+
+        .banner-paragraph {
+            display: flex;
+            flex: 1;
+            justify-content: space-around;
+            text-align: center;
+            margin-top: 60px;
+            font-size: 20px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+    </style>
+
+    <script type="text/javascript">
+        // var imgData = '';
+        
+        // function encodeImage(image) {
+        //     // var button = document.getElementById("button");
+        //     var img = images.files[0]
+
+        //     var files = new FileReader();
+
+        //     file.onloadend = function () {
+        //         imgdata = file.result
+        //         console.log(file.result)
+        //     };
+
+        //     file.readAsDataURL(img)
+
+        //     // button.addEventListener("click", createPdf)
+
+        //     function createPdf() {
+        //         var doc = new jsPDF()
+        //         doc.addImage(imgdata, 15, 15)
+        //         doc.save("toolzpdfdoc.pdf")
+        //     }
+        // }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="https://use.fontawesome.com/8b29d68db8.js"></script></head>
+    <script src="../js/image2pdf.js"></script>
+
+<body onload="pageLoaded()">
+    <div id="loading"></div>
+
+
+    <nav class="nav-bar">
+        <ul>
+            <li>
+                <img src="../assets/back-icon.png" class="back-btn" onclick="backPressed()" alt="Back" />
+            </li>
+            <li class="header-h1-li">
+                <h1 class="header-h1" style="margin-top: -100px;">Image to PDF</h1>
+            </li>
+        </ul>
+    </nav><br><br><br>
+
+    <div class="container">
+
+        <p class="banner-paragraph">
+            You can convert any of your images to PDF <br>
+            Example - JPG, PNG
+        </p>
+
+        <div class="tool-container">
+            <div class="upload-box-container">
+                <input type="file" name="files" class="form-control" id="imageFile" multiple required>
+            </div><br><br>
+            <button class="button" id="button">
+                Download PDF &nbsp;<i class="fa fa-cloud-download" style="margin-top: 2px;" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>
